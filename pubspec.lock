@@ -155,6 +155,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.2"
+  plugin_platform_interface:
+    dependency: transitive
+    description:
+      name: plugin_platform_interface
+      sha256: "6a2128648c854906c53fa8e33986fc0247a1116122f9534dd20e3ab9e16a32bc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.4"
   provider:
     dependency: transitive
     description:
@@ -224,6 +232,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  wireguard_vpn:
+    dependency: "direct main"
+    description:
+      name: wireguard_vpn
+      sha256: bac55e5b566a367938b41e7ee8461d257e627642aef1a8e9ed81fdad941f7421
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1+3"
 sdks:
   dart: ">=2.19.6 <3.0.0"
-  flutter: ">=1.17.0"
+  flutter: ">=2.5.0"

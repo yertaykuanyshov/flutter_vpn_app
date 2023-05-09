@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.2
   overlay_kit: ^1.0.7
+  wireguard_vpn: ^0.0.1+3
 
 dev_dependencies:
   flutter_test:
