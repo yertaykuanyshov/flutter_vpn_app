@@ -7,9 +7,9 @@ abstract class VpnService {
 class VpnServiceImpl extends VpnService {
   @override
   Future<void> connect() async {
-    final wireguard = WireguardVpn();
+    final vpn = WireguardVpn();
 
-    final results = await wireguard.changeStateParams(
+    final results = await vpn.changeStateParams(
       SetStateParams(
         state: false,
         tunnel: Tunnel(

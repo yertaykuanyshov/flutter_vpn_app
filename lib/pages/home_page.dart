@@ -23,17 +23,19 @@ class HomePage extends StatelessWidget {
       body: BlocConsumer(
         bloc: context.read<VpnBloc>(),
         listener: (_, state) {
-          if (state == VpnState.connecting) {
+          if (state == VpnState.progress) {
             context.showProgress();
           } else {
             context.hideProgress();
           }
         },
+        buildWhen: (_, state) => state == VpnState.connected || state == VpnState.stopped,
         builder: (BuildContext context, state) {
           return Stack(
             children: [
               Image.network(
-                  "https://cdn.pixabay.com/photo/2014/03/25/16/34/world-map-297446_1280.png"),
+                "https://cdn.pixabay.com/photo/2014/03/25/16/34/world-map-297446_1280.png",
+              ),
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -51,13 +53,37 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         child: Center(
-                          child: Text(
-                            state == VpnState.connected ? "Connected" : "GO",
-                            style: const TextStyle(
-                              fontSize: 30,
-                              color: greenColor,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          child: Builder(
+                            builder: (context) {
+                              if (state == VpnState.connected) {
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "Connected",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: greenColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () => context.read<VpnBloc>().stop(),
+                                      child: const Text("Stop"),
+                                    ),
+                                  ],
+                                );
+                              }
+
+                              return const Text(
+                                "GO",
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: greenColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
