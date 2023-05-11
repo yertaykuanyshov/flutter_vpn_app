@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kalkan/services/vpn_service.dart';
 
 enum VpnState {
   progress,
@@ -8,7 +9,9 @@ enum VpnState {
 }
 
 class VpnBloc extends Cubit<VpnState> {
-  VpnBloc() : super(VpnState.stopped);
+  VpnBloc(this._vpnService) : super(VpnState.stopped);
+
+  final VpnService _vpnService;
 
   void connect() async {
     emit(VpnState.progress);

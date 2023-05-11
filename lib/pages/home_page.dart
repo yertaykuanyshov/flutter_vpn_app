@@ -29,12 +29,15 @@ class HomePage extends StatelessWidget {
             context.hideProgress();
           }
         },
-        buildWhen: (_, state) => state == VpnState.connected || state == VpnState.stopped,
+        buildWhen: (_, state) =>
+            state == VpnState.connected || state == VpnState.stopped,
         builder: (BuildContext context, state) {
           return Stack(
             children: [
               Image.network(
                 "https://cdn.pixabay.com/photo/2014/03/25/16/34/world-map-297446_1280.png",
+                height: 200,
+                fit: BoxFit.cover,
               ),
               Center(
                 child: Column(
@@ -49,7 +52,7 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(200),
                           border: Border.all(
                             width: 10,
-                            color: greenColor,
+                            color: Colors.black87,
                           ),
                         ),
                         child: Center(
@@ -63,12 +66,13 @@ class HomePage extends StatelessWidget {
                                       "Connected",
                                       style: TextStyle(
                                         fontSize: 20,
-                                        color: greenColor,
+                                        color: Colors.black87,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     TextButton(
-                                      onPressed: () => context.read<VpnBloc>().stop(),
+                                      onPressed: () =>
+                                          context.read<VpnBloc>().stop(),
                                       child: const Text("Stop"),
                                     ),
                                   ],
@@ -79,7 +83,7 @@ class HomePage extends StatelessWidget {
                                 "GO",
                                 style: TextStyle(
                                   fontSize: 30,
-                                  color: greenColor,
+                                  color: Colors.black87,
                                   fontWeight: FontWeight.bold,
                                 ),
                               );
@@ -91,22 +95,24 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Positioned.fill(
+              Positioned(
                 bottom: 30,
+                width: MediaQuery.of(context).size.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.network(
                       "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
                       width: 50,
                       height: 30,
                     ),
-                    const SizedBox(width: 30),
+                    const SizedBox(width: 10),
                     const Text(
                       "Germany",
                       style: TextStyle(
                         fontSize: 25,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ],
