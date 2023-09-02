@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kalkan/ext.dart';
 import '../blocs/vpn_bloc.dart';
 
@@ -11,10 +12,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          "Fenix VPN",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
+        title: Text(
+          "Pontiaca VPN",
+          style: GoogleFonts.ubuntu(
+            color: Colors.black,
+            fontSize: 30,
           ),
         ),
       ),
@@ -32,10 +34,13 @@ class HomePage extends StatelessWidget {
         builder: (BuildContext context, state) {
           return Stack(
             children: [
-              Image.network(
-                "https://cdn.pixabay.com/photo/2014/03/25/16/34/world-map-297446_1280.png",
-                height: 200,
-                fit: BoxFit.cover,
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Image.asset(
+                  "assets/map.png",
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
               ),
               Center(
                 child: Column(
@@ -44,13 +49,14 @@ class HomePage extends StatelessWidget {
                     GestureDetector(
                       onTap: () => context.read<VpnBloc>().connect(),
                       child: Container(
-                        width: 200,
-                        height: 200,
+                        width: 250,
+                        height: 250,
                         decoration: BoxDecoration(
+                          color: Colors.green.withOpacity(0.08),
                           borderRadius: BorderRadius.circular(200),
                           border: Border.all(
-                            width: 10,
-                            color: Colors.black87,
+                            width: 14,
+                            color: Colors.greenAccent,
                           ),
                         ),
                         child: Center(
@@ -64,7 +70,7 @@ class HomePage extends StatelessWidget {
                                       "Connected",
                                       style: TextStyle(
                                         fontSize: 20,
-                                        color: Colors.black87,
+                                        color: Colors.greenAccent,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -80,8 +86,8 @@ class HomePage extends StatelessWidget {
                               return const Text(
                                 "GO",
                                 style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black87,
+                                  fontSize: 45,
+                                  color: Colors.greenAccent,
                                   fontWeight: FontWeight.bold,
                                 ),
                               );
@@ -102,15 +108,16 @@ class HomePage extends StatelessWidget {
                   children: [
                     Image.network(
                       "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
-                      width: 50,
+                      width: 30,
                       height: 30,
                     ),
                     const SizedBox(width: 10),
-                    const Text(
+                    Text(
                       "Germany",
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w400,
+                      style: GoogleFonts.ubuntu(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black26,
                       ),
                     ),
                   ],
