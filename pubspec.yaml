@@ -12,9 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
-  overlay_kit: ^1.0.8
   wireguard_vpn: ^0.0.2
-  google_fonts: ^5.1.0
+  logger: ^2.0.2+1
+  font_awesome_flutter: ^10.5.0
 
 dev_dependencies:
   flutter_test:
@@ -22,7 +22,6 @@ dev_dependencies:
   flutter_lints: ^2.0.3
   flutter_native_splash: ^2.3.2
   flutter_launcher_icons: ^0.13.1
-
 
 flutter:
   uses-material-design: true
@@ -36,9 +35,9 @@ flutter_launcher_icons:
 
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/splash.png
+  image: assets/app_icon.png
 
   android_12:
     color: "#ffffff"
-    image: assets/splash.png
+    image: assets/app_icon.png
 

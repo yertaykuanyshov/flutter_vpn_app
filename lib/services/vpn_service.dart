@@ -1,3 +1,4 @@
+import 'package:kalkan/main.dart';
 import 'package:wireguard_vpn/wireguard_vpn.dart';
 
 abstract class VpnService {
@@ -5,25 +6,25 @@ abstract class VpnService {
 }
 
 class VpnServiceImpl extends VpnService {
+  final vpn = WireguardVpn();
+
   @override
   Future<void> connect() async {
-    final vpn = WireguardVpn();
-
-    final results = await vpn.changeStateParams(
-      SetStateParams(
-        state: false,
-        tunnel: Tunnel(
-          name: "Germany",
-          address: "",
-          dnsServer: "",
-          listenPort: "",
-          peerAllowedIp: "",
-          peerEndpoint: "",
-          peerPublicKey: "",
-          privateKey: "",
-          peerPresharedKey: "",
-        ),
+    final params = SetStateParams(
+      state: true,
+      tunnel: Tunnel(
+        privateKey: '',
+        name: '',
+        address: '',
+        listenPort: '',
+        dnsServer: '',
+        peerAllowedIp: '',
+        peerPublicKey: '',
+        peerEndpoint: '',
+        peerPresharedKey: '',
       ),
     );
+
+    await vpn.changeStateParams(params).then((value) => logger.w(value));
   }
 }
