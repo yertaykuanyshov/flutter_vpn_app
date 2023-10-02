@@ -21,7 +21,7 @@ class VpnBloc extends Cubit<VpnState> {
     emit(VpnState.connected);
   }
 
-  void stop() async {
+  void disconnect() async {
     emit(VpnState.progress);
 
     await Future.delayed(const Duration(seconds: 2));

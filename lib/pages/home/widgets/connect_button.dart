@@ -5,7 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../blocs/vpn_bloc.dart';
 
 class ConnectButton extends StatelessWidget {
-  const ConnectButton({super.key});
+  const ConnectButton({
+    super.key,
+    this.isConnecting = false,
+  });
+
+  final bool isConnecting;
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +26,19 @@ class ConnectButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(300),
           ),
-          child: InkWell(
-            onTap: () => context.read<VpnBloc>().connect(),
-            child: const Icon(
-              FontAwesomeIcons.powerOff,
-              size: 80,
-              color: Colors.white,
-            ),
-          ),
+          child: isConnecting
+              ? const CircularProgressIndicator(
+                  color: Colors.white,
+                  strokeWidth: 10,
+                )
+              : InkWell(
+                  onTap: () => context.read<VpnBloc>().connect(),
+                  child: const Icon(
+                    FontAwesomeIcons.powerOff,
+                    size: 80,
+                    color: Colors.white,
+                  ),
+                ),
         ),
       ),
     );

@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
       body: BlocBuilder(
         bloc: context.read<VpnBloc>(),
         builder: (BuildContext context, state) {
-          return Stack(
+          return Column(
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 30),
@@ -35,9 +35,47 @@ class HomePage extends StatelessWidget {
                   opacity: const AlwaysStoppedAnimation(0.1),
                 ),
               ),
-              state == VpnState.connected
-                  ? const DisconnectButton()
-                  : const ConnectButton(),
+              Builder(
+                builder: (_) {
+                  if (state == VpnState.connected) {
+                    return const DisconnectButton();
+                  }
+
+                  return ConnectButton(
+                    isConnecting: state == VpnState.progress,
+                  );
+                },
+              ),
+              const Expanded(child: SizedBox()),
+              Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 20,
+                  left: 10,
+                  right: 10,
+                ),
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Germany",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Icon(
+                        FontAwesomeIcons.chevronDown,
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           );
         },
