@@ -9,6 +9,11 @@
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon"
         android:label="Pontiaca VPN">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4819957496143772~6856446211" />
+
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -17,6 +22,7 @@
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:windowSoftInputMode="adjustResize">
+
 
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"

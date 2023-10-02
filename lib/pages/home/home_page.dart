@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kalkan/pages/home/widgets/connect_button.dart';
 import 'package:kalkan/pages/home/widgets/disconnect_button.dart';
 import '../../blocs/vpn_bloc.dart';
+import '../../widgets/banner_ad.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,6 +48,7 @@ class HomePage extends StatelessWidget {
                 },
               ),
               const Expanded(child: SizedBox()),
+              const BannerAdView(),
               Padding(
                 padding: const EdgeInsets.only(
                   bottom: 20,
