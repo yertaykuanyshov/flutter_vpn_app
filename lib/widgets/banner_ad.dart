@@ -11,7 +11,6 @@ class BannerAdView extends StatefulWidget {
 
 class _BannerAdViewState extends State<BannerAdView> {
   BannerAd? _bannerAd;
-
   bool _isLoaded = false;
 
   void loadAd() {
@@ -20,8 +19,12 @@ class _BannerAdViewState extends State<BannerAdView> {
       request: const AdRequest(),
       size: AdSize.fluid,
       listener: BannerAdListener(
+        onAdFailedToLoad: (ad, error) {
+          print(error);
+        },
         onAdLoaded: (ad) {
           setState(() {
+            _bannerAd = ad as BannerAd;
             _isLoaded = true;
           });
         },
@@ -31,9 +34,9 @@ class _BannerAdViewState extends State<BannerAdView> {
 
   @override
   void initState() {
-    super.initState();
-
     loadAd();
+
+    super.initState();
   }
 
   @override
@@ -48,7 +51,7 @@ class _BannerAdViewState extends State<BannerAdView> {
           );
         }
 
-        return const LinearProgressIndicator();
+        return const SizedBox();
       },
     );
   }

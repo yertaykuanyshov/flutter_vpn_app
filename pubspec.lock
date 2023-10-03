@@ -208,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.8.1"
+  keystore_generator:
+    dependency: "direct dev"
+    description:
+      name: keystore_generator
+      sha256: f301590f0d215285ed5c74fe93326e3e9535872e8951a71264d9972cb9089b3f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   lints:
     dependency: transitive
     description:
