@@ -30,33 +30,58 @@ class VpnList extends StatelessWidget {
               onPressed: () => showModalBottomSheet(
                 context: context,
                 builder: (_) {
-                  return ListView.builder(
-                    itemCount: servers.length,
-                    shrinkWrap: true,
-                    itemBuilder: (_, idx) {
-                      final vpn = servers[idx];
-
-                      if (vpn.isFree) {
-                        return ListTile(
-                          leading: CachedNetworkImage(
-                            imageUrl: vpn.flagUrl,
-                            width: 50,
+                  return Column(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          "Country",
+                          style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold,
                           ),
-                          title: Text(vpn.name),
-                          onTap: () {
-                            context.read<VpnListBloc>().changeServer(vpn);
-                            Navigator.of(context).pop();
-                          },
-                        );
-                      }
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: servers.length,
+                          shrinkWrap: true,
+                          itemBuilder: (_, idx) {
+                            final vpn = servers[idx];
 
-                      return ListTile(
-                        leading: const Icon(Icons.flag),
-                        title: Text(vpn.name),
-                        trailing: const Icon(FontAwesomeIcons.star),
-                        onTap: null,
-                      );
-                    },
+                            if (vpn.isFree) {
+                              return ListTile(
+                                leading: Container(
+                                  width: 60,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      fit: BoxFit.fitWidth,
+                                      image: CachedNetworkImageProvider(
+                                        vpn.flagUrl,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                title: Text(vpn.name),
+                                onTap: () {
+                                  context.read<VpnListBloc>().changeServer(vpn);
+                                  Navigator.of(context).pop();
+                                },
+                              );
+                            }
+
+                            return ListTile(
+                              leading: const Icon(Icons.flag),
+                              title: Text(vpn.name),
+                              trailing: const Icon(FontAwesomeIcons.star),
+                              onTap: null,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   );
                 },
               ),
