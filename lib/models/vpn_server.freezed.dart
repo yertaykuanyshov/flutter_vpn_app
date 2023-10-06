@@ -22,6 +22,7 @@ VpnServer _$VpnServerFromJson(Map<String, dynamic> json) {
 mixin _$VpnServer {
   String get name => throw _privateConstructorUsedError;
   String get config => throw _privateConstructorUsedError;
+  String get flagUrl => throw _privateConstructorUsedError;
   bool get isFree => throw _privateConstructorUsedError;
   bool get isAvailable => throw _privateConstructorUsedError;
 
@@ -36,7 +37,12 @@ abstract class $VpnServerCopyWith<$Res> {
   factory $VpnServerCopyWith(VpnServer value, $Res Function(VpnServer) then) =
       _$VpnServerCopyWithImpl<$Res, VpnServer>;
   @useResult
-  $Res call({String name, String config, bool isFree, bool isAvailable});
+  $Res call(
+      {String name,
+      String config,
+      String flagUrl,
+      bool isFree,
+      bool isAvailable});
 }
 
 /// @nodoc
@@ -54,6 +60,7 @@ class _$VpnServerCopyWithImpl<$Res, $Val extends VpnServer>
   $Res call({
     Object? name = null,
     Object? config = null,
+    Object? flagUrl = null,
     Object? isFree = null,
     Object? isAvailable = null,
   }) {
@@ -65,6 +72,10 @@ class _$VpnServerCopyWithImpl<$Res, $Val extends VpnServer>
       config: null == config
           ? _value.config
           : config // ignore: cast_nullable_to_non_nullable
+              as String,
+      flagUrl: null == flagUrl
+          ? _value.flagUrl
+          : flagUrl // ignore: cast_nullable_to_non_nullable
               as String,
       isFree: null == isFree
           ? _value.isFree
@@ -86,7 +97,12 @@ abstract class _$$VpnServerImplCopyWith<$Res>
       __$$VpnServerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String config, bool isFree, bool isAvailable});
+  $Res call(
+      {String name,
+      String config,
+      String flagUrl,
+      bool isFree,
+      bool isAvailable});
 }
 
 /// @nodoc
@@ -102,6 +118,7 @@ class __$$VpnServerImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? config = null,
+    Object? flagUrl = null,
     Object? isFree = null,
     Object? isAvailable = null,
   }) {
@@ -113,6 +130,10 @@ class __$$VpnServerImplCopyWithImpl<$Res>
       config: null == config
           ? _value.config
           : config // ignore: cast_nullable_to_non_nullable
+              as String,
+      flagUrl: null == flagUrl
+          ? _value.flagUrl
+          : flagUrl // ignore: cast_nullable_to_non_nullable
               as String,
       isFree: null == isFree
           ? _value.isFree
@@ -132,6 +153,7 @@ class _$VpnServerImpl implements _VpnServer {
   const _$VpnServerImpl(
       {required this.name,
       required this.config,
+      required this.flagUrl,
       required this.isFree,
       required this.isAvailable});
 
@@ -143,13 +165,15 @@ class _$VpnServerImpl implements _VpnServer {
   @override
   final String config;
   @override
+  final String flagUrl;
+  @override
   final bool isFree;
   @override
   final bool isAvailable;
 
   @override
   String toString() {
-    return 'VpnServer(name: $name, config: $config, isFree: $isFree, isAvailable: $isAvailable)';
+    return 'VpnServer(name: $name, config: $config, flagUrl: $flagUrl, isFree: $isFree, isAvailable: $isAvailable)';
   }
 
   @override
@@ -159,6 +183,7 @@ class _$VpnServerImpl implements _VpnServer {
             other is _$VpnServerImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.config, config) || other.config == config) &&
+            (identical(other.flagUrl, flagUrl) || other.flagUrl == flagUrl) &&
             (identical(other.isFree, isFree) || other.isFree == isFree) &&
             (identical(other.isAvailable, isAvailable) ||
                 other.isAvailable == isAvailable));
@@ -167,7 +192,7 @@ class _$VpnServerImpl implements _VpnServer {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, config, isFree, isAvailable);
+      Object.hash(runtimeType, name, config, flagUrl, isFree, isAvailable);
 
   @JsonKey(ignore: true)
   @override
@@ -187,6 +212,7 @@ abstract class _VpnServer implements VpnServer {
   const factory _VpnServer(
       {required final String name,
       required final String config,
+      required final String flagUrl,
       required final bool isFree,
       required final bool isAvailable}) = _$VpnServerImpl;
 
@@ -197,6 +223,8 @@ abstract class _VpnServer implements VpnServer {
   String get name;
   @override
   String get config;
+  @override
+  String get flagUrl;
   @override
   bool get isFree;
   @override

@@ -29,6 +29,7 @@ void main() async {
 
   final vpnService = VpnServiceImpl();
   final vpnBloc = VpnBloc(vpnService);
+  final vpnListBloc = VpnListBloc();
 
   runApp(
     BlocProvider(

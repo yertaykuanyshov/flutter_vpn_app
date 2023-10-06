@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:kalkan/pages/home/widgets/bg_map_image.dart';
 import 'package:kalkan/pages/home/widgets/connect_button.dart';
+import 'package:kalkan/pages/home/widgets/current_vpn_server.dart';
 import 'package:kalkan/pages/home/widgets/disconnect_button.dart';
+import 'package:kalkan/pages/home/widgets/vpn_list.dart';
 import '../../blocs/vpn_bloc.dart';
 import '../../widgets/banner_ad.dart';
 
@@ -28,14 +31,7 @@ class HomePage extends StatelessWidget {
         builder: (BuildContext context, state) {
           return Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: Image.asset(
-                  "assets/map.png",
-                  width: double.infinity,
-                  opacity: const AlwaysStoppedAnimation(0.1),
-                ),
-              ),
+              const BgMapImage(),
               Builder(
                 builder: (_) {
                   if (state == VpnState.connected) {
@@ -50,47 +46,14 @@ class HomePage extends StatelessWidget {
               const Expanded(child: SizedBox()),
               const BannerAdView(),
               Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 20,
-                  left: 10,
-                  right: 10,
-                ),
+                padding: const EdgeInsets.only(bottom: 20, left: 10, right: 10),
                 child: TextButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (_) {
-                        return ListView.builder(
-                          itemCount: 3,
-                          shrinkWrap: true,
-                          itemBuilder: (_, idx) {
-                            return const ListTile(
-                              leading: Icon(Icons.flag),
-                              title: Text("France"),
-                            );
-                          },
-                        );
-                      },
-                    );
-                  },
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Germany",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Icon(
-                        FontAwesomeIcons.chevronDown,
-                        color: Colors.black,
-                      ),
-                    ],
+                  child: const CurrentVpnServer(name: ''),
+                  onPressed: () => showModalBottomSheet(
+                    context: context,
+                    builder: (_) {
+                      return const VpnList();
+                    },
                   ),
                 ),
               ),

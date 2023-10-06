@@ -1,15 +1,14 @@
-import 'package:kalkan/main.dart';
 import 'package:wireguard_vpn/wireguard_vpn.dart';
 
 abstract class VpnService {
-  Future<void> connect();
+  Future<bool> connect();
 }
 
 class VpnServiceImpl extends VpnService {
   final vpn = WireguardVpn();
 
   @override
-  Future<void> connect() async {
+  Future<bool> connect() async {
     final params = SetStateParams(
       state: true,
       tunnel: Tunnel(
@@ -25,6 +24,6 @@ class VpnServiceImpl extends VpnService {
       ),
     );
 
-    await vpn.changeStateParams(params).then((value) => logger.w(value));
+    return await vpn.changeStateParams(params) ?? false;
   }
 }

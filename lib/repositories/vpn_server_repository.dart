@@ -6,11 +6,20 @@ abstract class VpnServerRepository {
 }
 
 class VpnServerRepositoryImpl extends VpnServerRepository {
+  final List<VpnServer> _vpnServers = [];
+
   @override
   Future<List<VpnServer>> getAllServers() async {
+    if (_vpnServers.isNotEmpty) {
+      return _vpnServers;
+    }
+
     final servers =
         await FirebaseFirestore.instance.collection("vpnServers").get();
 
-    return servers.docs.map((e) => VpnServer.fromJson(e.data())).toList();
+    _vpnServers
+        .addAll(servers.docs.map((e) => VpnServer.fromJson(e.data())).toList());
+
+    return _vpnServers;
   }
 }

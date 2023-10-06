@@ -9,6 +9,7 @@ class VpnServer with _$VpnServer {
   const factory VpnServer({
     required String name,
     required String config,
+    required String flagUrl,
     required bool isFree,
     required bool isAvailable,
   }) = _VpnServer;
