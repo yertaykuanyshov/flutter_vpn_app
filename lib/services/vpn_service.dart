@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:kalkan/main.dart';
 import 'package:kalkan/models/vpn_server.dart';
 import 'package:wireguard_vpn/wireguard_vpn.dart';
 
@@ -12,12 +15,15 @@ abstract class VpnService {
 class VpnServiceImpl extends VpnService {
   final vpn = WireguardVpn();
 
-  late Tunnel _currentTunnel;
+  Tunnel? _currentTunnel;
 
   @override
   Future<bool> connect(VpnServer vpnServer) async {
     try {
       _currentTunnel = getTunnel(vpnServer.config);
+
+      logger.w(_currentTunnel!.toJson());
+
       return await changeState(true);
     } catch (e) {
       return false;
@@ -32,7 +38,7 @@ class VpnServiceImpl extends VpnService {
   Future<bool> changeState(bool isActive) async {
     final params = SetStateParams(
       state: isActive,
-      tunnel: _currentTunnel,
+      tunnel: _currentTunnel!,
     );
 
     return await vpn.changeStateParams(params) ?? false;
@@ -40,7 +46,14 @@ class VpnServiceImpl extends VpnService {
 
   @override
   Tunnel getTunnel(String data) {
-    final config = data.split("\n");
+
+    logger.w(data);
+
+    final decodedData = utf8.decode(base64.decode(data));
+
+    logger.w(decodedData);
+
+    final config = decodedData.split("\n");
 
     final privateKey = config
         .firstWhere((e) => e.contains("PrivateKey"))
@@ -58,14 +71,17 @@ class VpnServiceImpl extends VpnService {
     final endpoint = config
         .firstWhere((e) => e.contains("Endpoint"))
         .split("Endpoint = ")[1];
+
+    final listenPort = endpoint.split(":")[1];
+
     final allowedIPs = config
         .firstWhere((e) => e.contains("AllowedIPs"))
         .split("AllowedIPs = ")[1];
 
     return Tunnel(
-      name: "",
+      name: "Germany",
       address: address,
-      listenPort: "",
+      listenPort: listenPort,
       dnsServer: dns,
       privateKey: privateKey,
       peerAllowedIp: allowedIPs,
