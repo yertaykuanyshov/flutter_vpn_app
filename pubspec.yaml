@@ -40,6 +40,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/map.png
+    - assets/vpn_server_test.conf
 
 flutter_launcher_icons:
   android: "launcher_icon"

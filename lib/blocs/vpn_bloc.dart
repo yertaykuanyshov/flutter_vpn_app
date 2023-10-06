@@ -21,7 +21,8 @@ class VpnBloc extends Cubit<VpnState> {
   void connect() async {
     emit(VpnState.progress);
 
-    final isConnected = await _vpnService.connect();
+    final vpnServers = _vpnServerRepository.getCurrentServer();
+    final isConnected = await _vpnService.connect(vpnServers);
 
     if (isConnected) {
       emit(VpnState.connected);
@@ -31,6 +32,8 @@ class VpnBloc extends Cubit<VpnState> {
   }
 
   void disconnect() async {
+    await _vpnService.disconnect();
+
     emit(VpnState.stopped);
   }
 }
