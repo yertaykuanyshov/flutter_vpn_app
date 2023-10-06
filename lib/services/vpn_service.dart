@@ -46,12 +46,7 @@ class VpnServiceImpl extends VpnService {
 
   @override
   Tunnel getTunnel(String data) {
-
-    logger.w(data);
-
     final decodedData = utf8.decode(base64.decode(data));
-
-    logger.w(decodedData);
 
     final config = decodedData.split("\n");
 
