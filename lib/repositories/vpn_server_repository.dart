@@ -23,8 +23,12 @@ class VpnServerRepositoryImpl extends VpnServerRepository {
     final servers =
         await FirebaseFirestore.instance.collection("vpnServers").get();
 
-    _vpnServers
-        .addAll(servers.docs.map((e) => VpnServer.fromJson(e.data())).toList());
+    final vpnServers = servers.docs
+        .map((e) => VpnServer.fromJson(e.data()))
+        .where((vpn) => vpn.isAvailable == true)
+        .toList();
+
+    _vpnServers.addAll(vpnServers);
 
     return _vpnServers;
   }

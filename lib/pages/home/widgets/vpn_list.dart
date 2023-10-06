@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -37,7 +38,10 @@ class VpnList extends StatelessWidget {
 
                       if (vpn.isFree) {
                         return ListTile(
-                          leading: const Icon(Icons.flag),
+                          leading: CachedNetworkImage(
+                            imageUrl: vpn.flagUrl,
+                            width: 50,
+                          ),
                           title: Text(vpn.name),
                           onTap: () {
                             context.read<VpnListBloc>().changeServer(vpn);

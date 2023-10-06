@@ -13,10 +13,11 @@ abstract class VpnService {
 class VpnServiceImpl extends VpnService {
   final vpn = WireguardVpn();
 
-  late Tunnel currentTunnel;
+  late Tunnel _currentTunnel;
 
   @override
   Future<bool> connect(VpnServer vpnServer) async {
+    _currentTunnel = getTunnel(vpnServer.config);
     return await changeState(true);
   }
 
@@ -28,7 +29,7 @@ class VpnServiceImpl extends VpnService {
   Future<bool> changeState(bool isActive) async {
     final params = SetStateParams(
       state: isActive,
-      tunnel: currentTunnel,
+      tunnel: _currentTunnel,
     );
 
     return await vpn.changeStateParams(params) ?? false;
