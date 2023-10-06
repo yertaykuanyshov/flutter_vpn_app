@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kalkan/pages/home/widgets/bg_map_image.dart';
 import 'package:kalkan/pages/home/widgets/connect_button.dart';
-import 'package:kalkan/pages/home/widgets/current_vpn_server.dart';
 import 'package:kalkan/pages/home/widgets/disconnect_button.dart';
 import 'package:kalkan/pages/home/widgets/vpn_list.dart';
 import '../../blocs/vpn_bloc.dart';
