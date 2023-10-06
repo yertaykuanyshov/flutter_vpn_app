@@ -10,9 +10,7 @@ class VpnApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: const ColorScheme.light(
-          primary: Colors.green,
-        ),
+        colorScheme: const ColorScheme.light(primary: Colors.green),
       ),
       home: const HomePage(),
     );

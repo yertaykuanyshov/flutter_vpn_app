@@ -45,18 +45,7 @@ class HomePage extends StatelessWidget {
               ),
               const Expanded(child: SizedBox()),
               const BannerAdView(),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20, left: 10, right: 10),
-                child: TextButton(
-                  child: const CurrentVpnServer(name: ''),
-                  onPressed: () => showModalBottomSheet(
-                    context: context,
-                    builder: (_) {
-                      return const VpnList();
-                    },
-                  ),
-                ),
-              ),
+              const VpnList(),
             ],
           );
         },
