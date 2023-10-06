@@ -23,9 +23,9 @@ class DisconnectButton extends StatelessWidget {
           ),
           child: InkWell(
             onTap: () => context.read<VpnBloc>().disconnect(),
-            child: const Icon(
+            child: Icon(
               FontAwesomeIcons.powerOff,
-              color: Colors.blueAccent,
+              color: Theme.of(context).primaryColor,
               size: 80,
             ),
           ),

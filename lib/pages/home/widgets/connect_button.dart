@@ -20,9 +20,9 @@ class ConnectButton extends StatelessWidget {
         height: 250,
         child: Card(
           clipBehavior: Clip.antiAlias,
-          color: Colors.blueAccent,
+          color: Theme.of(context).primaryColor,
           elevation: 30,
-          shadowColor: Colors.blueAccent,
+          shadowColor: Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(300),
           ),

@@ -7,13 +7,12 @@ class VpnApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: const ColorScheme.light(
-          primary: Colors.blueAccent,
-        )
+          primary: Colors.green,
+        ),
       ),
       home: const HomePage(),
     );

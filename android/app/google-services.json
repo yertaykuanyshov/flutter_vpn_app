@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "808266810728",
+    "project_id": "pontiaca-vpn",
+    "storage_bucket": "pontiaca-vpn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808266810728:android:77a242ed5668474d1b02dd",
+        "android_client_info": {
+          "package_name": "com.pontiaca.vpn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_eJGbZcIwDP4skoAiv01qy3PhEGp18DA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808266810728:android:637a340ca6a0466e1b02dd",
+        "android_client_info": {
+          "package_name": "fast.vpn.vpn_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_eJGbZcIwDP4skoAiv01qy3PhEGp18DA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

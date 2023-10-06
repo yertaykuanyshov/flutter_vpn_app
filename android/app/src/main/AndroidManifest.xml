@@ -1,19 +1,9 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kalkan">
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon"
-        android:label="Pontiaca VPN">
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4819957496143772~6856446211" />
-
+        android:icon="@mipmap/ic_launcher"
+        android:label="vpn_app">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -23,7 +13,6 @@
             android:theme="@style/LaunchTheme"
             android:windowSoftInputMode="adjustResize">
 
-
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme" />
@@ -32,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4819957496143772~6856446211" />
+
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
