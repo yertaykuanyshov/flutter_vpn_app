@@ -1,4 +1,3 @@
-import 'package:kalkan/main.dart';
 import 'package:kalkan/models/vpn_server.dart';
 import 'package:wireguard_vpn/wireguard_vpn.dart';
 
@@ -17,8 +16,12 @@ class VpnServiceImpl extends VpnService {
 
   @override
   Future<bool> connect(VpnServer vpnServer) async {
-    _currentTunnel = getTunnel(vpnServer.config);
-    return await changeState(true);
+    try {
+      _currentTunnel = getTunnel(vpnServer.config);
+      return await changeState(true);
+    } catch (e) {
+      return false;
+    }
   }
 
   @override

@@ -26,8 +26,18 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: BlocBuilder(
+      body: BlocConsumer(
         bloc: context.read<VpnBloc>(),
+        listener: (_, state) {
+          if (state == VpnState.failedConnection) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("Failed connection"),
+                duration: Duration(seconds: 2),
+              ),
+            );
+          }
+        },
         builder: (BuildContext context, state) {
           return Column(
             children: [
