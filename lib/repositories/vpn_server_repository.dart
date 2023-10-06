@@ -40,6 +40,6 @@ class VpnServerRepositoryImpl extends VpnServerRepository {
 
   @override
   VpnServer getCurrentServer() {
-    return _currentVpnServer ?? _vpnServers.first;
+    return _currentVpnServer ?? _vpnServers.firstWhere((e) => e.isFree == true);
   }
 }

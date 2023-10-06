@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kalkan/blocs/vpn_bloc.dart';
 import 'package:kalkan/models/vpn_server.dart';
+import 'package:kalkan/pages/home/widgets/country_item.dart';
 
 import '../../../blocs/vpn_list_bloc.dart';
 import 'current_vpn_server.dart';
@@ -47,36 +48,8 @@ class VpnList extends StatelessWidget {
                           itemCount: servers.length,
                           shrinkWrap: true,
                           itemBuilder: (_, idx) {
-                            final vpn = servers[idx];
-
-                            if (vpn.isFree) {
-                              return ListTile(
-                                leading: Container(
-                                  width: 60,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      fit: BoxFit.fitWidth,
-                                      image: CachedNetworkImageProvider(
-                                        vpn.flagUrl,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                title: Text(vpn.name),
-                                onTap: () {
-                                  context.read<VpnListBloc>().changeServer(vpn);
-                                  Navigator.of(context).pop();
-                                },
-                              );
-                            }
-
-                            return ListTile(
-                              leading: const Icon(Icons.flag),
-                              title: Text(vpn.name),
-                              trailing: const Icon(FontAwesomeIcons.star),
-                              onTap: null,
+                            return CountryItem(
+                              vpnServer: servers[idx],
                             );
                           },
                         ),
