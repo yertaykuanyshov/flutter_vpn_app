@@ -36,7 +36,7 @@ class VpnList extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          "Country",
+                          "VPN server country",
                           style: TextStyle(
                             fontSize: 23,
                             fontWeight: FontWeight.bold,

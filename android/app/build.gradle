@@ -48,7 +48,7 @@ android {
 
     defaultConfig {
         applicationId "fast.vpn.vpn_app"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -57,8 +57,6 @@ android {
 
     signingConfigs {
         release {
-            shrinkResources false
-            minifyEnabled false
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
             storeFile file(keystoreProperties['storeFile'])
