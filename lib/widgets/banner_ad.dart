@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:kalkan/config.dart';
+import 'package:kalkan/main.dart';
 
 class BannerAdView extends StatefulWidget {
   const BannerAdView({super.key});
@@ -20,7 +21,7 @@ class _BannerAdViewState extends State<BannerAdView> {
       size: AdSize.fluid,
       listener: BannerAdListener(
         onAdFailedToLoad: (ad, error) {
-          print(error);
+          logger.e(error);
         },
         onAdLoaded: (ad) {
           setState(() {

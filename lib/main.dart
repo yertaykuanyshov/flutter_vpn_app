@@ -20,7 +20,11 @@ void main() async {
 
   await MobileAds.instance.initialize();
   await MobileAds.instance.updateRequestConfiguration(
-    RequestConfiguration(testDeviceIds: ["FAA7CE61D7238E927C7421AD8C935215"]),
+    RequestConfiguration(
+      testDeviceIds: [
+        "FAA7CE61D7238E927C7421AD8C935215",
+      ],
+    ),
   );
 
   final vpnService = VpnServiceImpl();
@@ -28,9 +32,7 @@ void main() async {
   final vpnBloc = VpnBloc(vpnService, vpnListRepository);
   final vpnListBloc = VpnListBloc(vpnListRepository, vpnBloc);
 
-  await Future.wait([
-    vpnListBloc.getServers(),
-  ]);
+  await vpnListBloc.getServers();
 
   runApp(
     MultiBlocProvider(

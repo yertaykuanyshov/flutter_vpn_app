@@ -4,5 +4,5 @@ const greenColor = Color.fromRGBO(102, 204, 102, 1);
 
 class AdConfig {
   static const String homePageBannerID =
-      "ca-app-pub-4819957496143772/9246859732";
+      "ca-app-pub-4819957496143772/5131083387";
 }
