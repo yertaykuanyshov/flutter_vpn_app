@@ -15,7 +15,7 @@ class _BannerAdViewState extends State<BannerAdView> {
   bool _isLoaded = false;
 
   void loadAd() {
-    _bannerAd = BannerAd(
+    BannerAd(
       adUnitId: AdConfig.homePageBannerID,
       request: const AdRequest(),
       size: AdSize.fluid,
@@ -30,14 +30,14 @@ class _BannerAdViewState extends State<BannerAdView> {
           });
         },
       ),
-    )..load();
+    ).load();
   }
 
   @override
   void initState() {
-    loadAd();
-
     super.initState();
+
+    loadAd();
   }
 
   @override
