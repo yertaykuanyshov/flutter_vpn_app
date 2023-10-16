@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:kalkan/main.dart';
 
@@ -27,14 +29,16 @@ class AdsServiceImpl extends AdsService {
           _interstitialAd!.setImmersiveMode(true);
         },
         onAdFailedToLoad: (LoadAdError error) {
-          _numInterstitialLoadAttempts += 1;
-          _interstitialAd = null;
+          Timer(const Duration(seconds: 5), () {
+            _numInterstitialLoadAttempts += 1;
+            _interstitialAd = null;
 
-          logger.e("Error loadInterstitialAds: $error");
+            logger.e("Error loadInterstitialAds: $error");
 
-          if (_numInterstitialLoadAttempts < _maxFailedLoadAttempts) {
-            loadInterstitialAds();
-          }
+            if (_numInterstitialLoadAttempts < _maxFailedLoadAttempts) {
+              loadInterstitialAds();
+            }
+          });
         },
       ),
     );

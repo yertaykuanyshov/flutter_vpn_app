@@ -6,7 +6,6 @@ import 'package:kalkan/repositories/vpn_server_repository.dart';
 import 'package:kalkan/services/ads_service.dart';
 import 'package:kalkan/services/vpn_service.dart';
 import 'package:logger/logger.dart';
-
 import 'app.dart';
 import 'blocs/vpn_bloc.dart';
 import 'blocs/vpn_list_bloc.dart';

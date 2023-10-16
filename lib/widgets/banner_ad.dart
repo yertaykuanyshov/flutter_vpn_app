@@ -18,7 +18,7 @@ class _BannerAdViewState extends State<BannerAdView> {
     BannerAd(
       adUnitId: AdConfig.homePageBannerID,
       request: const AdRequest(),
-      size: AdSize.fluid,
+      size: AdSize.largeBanner,
       listener: BannerAdListener(
         onAdFailedToLoad: (ad, error) {
           logger.e(error);
