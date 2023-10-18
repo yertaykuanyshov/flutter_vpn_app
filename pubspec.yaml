@@ -3,7 +3,7 @@ description: Pontiaca VPN
 
 publish_to: 'none'
 
-version: 1.0.2+5
+version: 1.0.2+6
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
@@ -41,6 +41,7 @@ flutter:
     - assets/map.png
     - assets/vpn_server_test.conf
     - assets/app_icon.png
+    - shorebird.yaml
 
 flutter_launcher_icons:
   android: "launcher_icon"

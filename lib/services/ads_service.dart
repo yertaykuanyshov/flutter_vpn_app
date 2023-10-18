@@ -33,8 +33,6 @@ class AdsServiceImpl extends AdsService {
             _numInterstitialLoadAttempts += 1;
             _interstitialAd = null;
 
-            logger.e("Error loadInterstitialAds: $error");
-
             if (_numInterstitialLoadAttempts < _maxFailedLoadAttempts) {
               loadInterstitialAds();
             }
