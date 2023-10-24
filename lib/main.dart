@@ -35,6 +35,7 @@ void main() async {
 
   await vpnListBloc.getServers();
   adsService.loadInterstitialAds();
+  adsService.loadRewardedVideo();
 
   runApp(
     MultiBlocProvider(

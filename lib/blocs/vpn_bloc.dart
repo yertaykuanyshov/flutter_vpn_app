@@ -25,10 +25,10 @@ class VpnBloc extends Cubit<VpnState> {
   void connect() async {
     emit(VpnState.progress);
 
-    _adsService.show();
-
     final vpnServers = _vpnServerRepository.getCurrentServer();
     final isConnected = await _vpnService.connect(vpnServers);
+
+    _adsService.showRewarded();
 
     if (isConnected) {
       emit(VpnState.connected);

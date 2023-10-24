@@ -3,7 +3,7 @@ description: Pontiaca VPN
 
 publish_to: 'none'
 
-version: 1.0.2+6
+version: 1.0.2+7
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
