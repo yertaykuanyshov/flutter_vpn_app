@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kalkan/main.dart';
 import 'package:kalkan/repositories/vpn_server_repository.dart';
 import 'package:kalkan/services/ads_service.dart';
+import 'package:kalkan/services/analytic_service.dart';
 import 'package:kalkan/services/vpn_service.dart';
 
 enum VpnState {
@@ -16,10 +17,12 @@ class VpnBloc extends Cubit<VpnState> {
     this._vpnService,
     this._vpnServerRepository,
     this._adsService,
+    this._analyticService,
   ) : super(VpnState.stopped);
 
   final VpnService _vpnService;
   final AdsService _adsService;
+  final AnalyticService _analyticService;
   final VpnServerRepository _vpnServerRepository;
 
   void connect() async {
@@ -29,6 +32,7 @@ class VpnBloc extends Cubit<VpnState> {
     final isConnected = await _vpnService.connect(vpnServers);
 
     _adsService.showRewarded();
+    _analyticService.onVpnConnect();
 
     if (isConnected) {
       emit(VpnState.connected);
